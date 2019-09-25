@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>grid</title>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../style.css">
+	<style>
+		html, body { height: 100%;  }
+		.flex-full > .layui-tab-item {
+			height: 100%;
+			max-height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="layui-tab flex-vertical  layui-tab-brief" style="margin:-1px 0">
+	  <ul class="layui-tab-title">
+	    <li class="layui-this">网站设置</li>
+	    <li>用户管理</li>
+	    <li>权限分配</li>
+	    <li>商品管理</li>
+	    <li>订单管理</li>
+	  </ul>
+	  <div class="layui-tab-content flex-full">
+	    <div class="layui-tab-item layui-show">
+	    	
+	    	<div class="layui-form flex-vertical" wid200 lay-filter="">
+	    	  <div class="flex-full" style="padding: 15px">
+	              <div class="layui-form-item">
+	                <label class="layui-form-label">网站名称</label>
+	                <div class="layui-input-block">
+	                  <input type="text" name="sitename" value="layuiAdmin" class="layui-input">
+	                </div>
+	              </div>
+	              <div class="layui-form-item">
+	                <label class="layui-form-label">网站域名</label>
+	                <div class="layui-input-block">
+	                  <input type="text" name="domain" lay-verify="url" value="http://www.layui.com" class="layui-input">
+	                </div>
+	              </div>
+	              <div class="layui-form-item">
+	                <label class="layui-form-label">缓存时间</label>
+	                <div class="layui-input-inline" style="width: 80px;">
+	                  <input type="text" name="cache" lay-verify="number" value="0" class="layui-input">
+	                </div>
+	                <div class="layui-input-inline layui-input-company">分钟</div>
+	                <div class="layui-form-mid layui-word-aux">本地开发一般推荐设置为 0，线上环境建议设置为 10。</div>
+	              </div>
+	              <div class="layui-form-item">
+	                <label class="layui-form-label">最大文件上传</label>
+	                <div class="layui-input-inline" style="width: 80px;">
+	                  <input type="text" name="cache" lay-verify="number" value="2048" class="layui-input">
+	                </div>
+	                <div class="layui-input-inline layui-input-company">KB</div>
+	                <div class="layui-form-mid layui-word-aux">提示：1 M = 1024 KB</div>
+	              </div>
+	              <div class="layui-form-item">
+	                <label class="layui-form-label">上传文件类型</label>
+	                <div class="layui-input-block">
+	                  <input type="text" name="cache" value="png|gif|jpg|jpeg|zip|rar" class="layui-input">
+	                </div>
+	              </div>
+	              
+	              <div class="layui-form-item layui-form-text">
+	                <label class="layui-form-label">首页标题</label>
+	                <div class="layui-input-block">
+	                  <textarea name="title" class="layui-textarea">layuiAdmin 通用后台管理模板系统</textarea>
+	                </div>
+	              </div>
+	              <div class="layui-form-item layui-form-text">
+	                <label class="layui-form-label">META关键词</label>
+	                <div class="layui-input-block">
+	                  <textarea name="keywords" class="layui-textarea" placeholder="多个关键词用英文状态 , 号分割"></textarea>
+	                </div>
+	              </div>
+	              <div class="layui-form-item layui-form-text">
+	                <label class="layui-form-label">META描述</label>
+	                <div class="layui-input-block">
+	                  <textarea name="descript" class="layui-textarea">layuiAdmin 是 layui 官方出品的通用型后台模板解决方案，提供了单页版和 iframe 版两种开发模式。layuiAdmin 是目前非常流行的后台模板框架，广泛用于各类管理平台。</textarea>
+	                </div>
+	              </div>
+	              <div class="layui-form-item layui-form-text">
+	                <label class="layui-form-label">版权信息</label>
+	                <div class="layui-input-block">
+	                  <textarea name="copyright" class="layui-textarea">© 2018 layui.com MIT license</textarea>
+	                </div>
+	              </div>
+	          </div>     
+              <div class="layui-form-item form-fixed-footer">
+                <div class="layui-input-block">
+                  <button class="layui-btn" lay-submit lay-filter="set_website">确认保存</button>
+                </div>
+              </div>
+            </div>
+
+	    </div>
+	    <div class="layui-tab-item">内容2</div>
+	    <div class="layui-tab-item">内容3</div>
+	    <div class="layui-tab-item">内容4</div>
+	    <div class="layui-tab-item">内容5</div>
+	  </div>
+	</div>
+</body>
+<script src="../layui/layui.js"></script>
+<script>
+
+	layui.use(['element', 'form'], function(){
+
+	  var element = layui.element;
+	  var form = layui.form
+	  
+	  //…
+	});
+
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>grid</title>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../style.css">
+	<style>
+		html, body { height: 100%;  }
+		.layui-table-view { margin: 0; }
+	</style>
+</head>
+<body>
+
+
+<table id="demo" lay-filter="test"></table>
+
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+  	<div class="layui-btn-group">
+	    <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="add">新增</button>
+	    <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="delete">删除</button>
+    </div>
+  </div>
+</script>
+
+<script src="../layui/layui.js"></script>
+<script>
+
+	layui.use('table', function(){
+
+	  	var table = layui.table;
+	  
+		//第一个实例
+		table.render({
+		    elem: '#demo',
+		    url: '../mock/user.json', //数据接口
+		    page: true, //开启分页
+		    toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
+		    defaultToolbar: ['filter', 'exports', 'print', 
+			   	{ //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+			      title: '提示',
+			      layEvent: 'LAYTABLE_TIPS',
+			      icon: 'layui-icon-tips'
+			    }
+			],
+			skin: 'line',
+		    cols: [[ //表头
+		      {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+		      ,{field: 'username', title: '用户名', width:80}
+		      ,{field: 'sex', title: '性别', width:80, sort: true}
+		      ,{field: 'city', title: '城市', width:80} 
+		      ,{field: 'sign', title: '签名', width: 177}
+		      ,{field: 'experience', title: '积分', width: 80, sort: true}
+		      ,{field: 'score', title: '评分', width: 80, sort: true}
+		      ,{field: 'classify', title: '职业', width: 80}
+		      ,{field: 'wealth', title: '财富', width: 135, sort: true}
+		    ]],
+		    height: 'full-0'
+		});
+
+		table.on('toolbar(test)', function(obj){
+
+			if( obj.event == 'add' ){
+
+				layer.open({
+					title: '新增',
+					type: 1,
+					skin: 'layui-layer-demo', //样式类名
+					anim: 2,
+					area: ['516px', '300px'],
+					shadeClose: true, //开启遮罩关闭
+					content: '内容'
+				});
+
+			}
+
+		})
+	  
+	});
+
+</script>
+</body>
+</html>

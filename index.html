@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="layui/css/layui.css">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		html, body {
+			height: 100%;
+		}
+		.desktop-wallpaper {
+			background: url("public/img/75cc3965bf29dda6d436b03fa9ca485d.jpg") center center no-repeat;			
+		}
+	</style>
+</head>
+<body class="desktop desktop-wallpaper">
+
+
+<div class="desktop-main">
+	
+	<div class="desktop-app-warp">
+		<div class="desktop-app-item" data-app data-name="sys" data-title="系统管理" data-url="example/sys.html">
+			<div class="desktop-app-icon">
+				<img src="public/img/course.png" alt="">
+			</div>
+			<div class="desktop-app-name">系统管理</div>
+		</div>
+		<div class="desktop-app-item" data-app data-name="chart" data-title="数据统计" data-url="example/chart.html">
+			<div class="desktop-app-icon">
+				<img src="public/img/chart.png" alt="">
+			</div>
+			<div class="desktop-app-name">数据统计</div>
+		</div>
+		<div class="desktop-app-item" data-app data-name="grid" data-title="表格信息" data-url="example/grid.html">
+			<div class="desktop-app-icon">
+				<img src="public/img/cloudpan.png" alt="">
+			</div>
+			<div class="desktop-app-name">表格信息</div>
+		</div>
+		
+	</div>
+
+</div>
+
+<div class="desktop-docked">
+	<div class="desktop-docked-wrap">
+		<button class="layui-btn layui-btn-normal layui-btn-sm" data-start><i class="layui-icon">&#xe66f;</i>  开始</button>
+		<span class="split-line">|</span>
+		<ul class="desktop-docked-list" id="dock">
+
+		</ul>
+		<span class="split-line">|</span>
+		<p style="line-height: 30px;" data-time></p>&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="p-xxs"><a href=""><i class="layui-icon layui-icon-notice"></i></a></div>
+	</div>
+</div>
+
+</body>
+<script src="layui/layui.js"></script>
+<script>
+	//一般直接写在一个js文件中
+layui.config({
+		 base: 'layui/lay/modules/' 
+	})
+
+layui.extend({
+		winmanage: 'winmanage'
+	})
+
+layui.use(['layer', 'form', 'util', 'winmanage'], function(){
+
+
+	    var layer = layui.layer,
+	  	    $ = layui.$,
+	  	    util = layui.util;
+
+	  	var winManage = new layui.winmanage({
+	  	 	dock: '#dock'
+	  	})
+
+	  	 
+	  	window.winManage = winManage   
+
+	  	$('[data-app]').on('click', function(){
+
+	  		winManage.insert( $(this).data() )
+
+	  	})    
+
+	  	$('[data-start]').on('click', function(){
+
+	  		var index = layer.open({
+	  			type: 1,
+				title: false,
+				closeBtn: 0, 
+				shadeClose: true,
+				area: ['340px', '215px'],
+				offset: [ window.innerHeight-215-41 , 1],				
+				anim: 2,
+				content: '菜单'
+	  		})
+
+	  		layer.style(index, {
+	  			boxShadow: 'none'
+	  		})
+
+	  	})
+	  
+
+
+	  	$('[data-time]').text( util.toDateString(new Date(), 'HH:mm') )
+
+	  	
+
+	});
+
+</script> 
+</html>
